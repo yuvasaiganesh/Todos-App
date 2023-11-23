@@ -1,0 +1,86 @@
+.detailSection{
+    display:flex;
+    flex-direction: column;
+    background-color: aqua;
+    align-items: center;
+    
+    height:100vh;
+}
+
+.taskHeading{
+    font-family:"Roboto";
+    color:black;
+    font-size:15px;
+    text-decoration: underline;
+}
+.backButton{
+  background-color: orangered;
+  height:22px;
+  width:150px;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  font-size:12px;
+}
+
+.taskPara{
+    font-family:"Roboto";
+    color:black;
+    font-size:15px;
+}
+@media screen and (min-width:400px){
+    .taskHeading{
+        
+        font-size:25px;
+        
+    }
+    
+    .taskPara{
+        font-family:"Roboto";
+        color:black;
+        font-size:20px;
+    }
+    .backButton{
+        
+        height:24px;
+        width:170px;
+      
+      
+      
+        font-size:14px;
+      }
+}
+
+@media screen and (min-width:768px){
+    .taskHeading{
+        
+        font-size:35px;
+        
+    }
+    
+    .taskPara{
+        font-family:"Roboto";
+        color:black;
+        font-size:25px;
+    }
+    .backButton{
+        font-size:15px;
+        height:26px;
+        width:180px;
+        
+      }
+}
+
+@media screen and (min-width:1024px){
+    .taskHeading{
+        
+        font-size:40px;
+        
+    }
+    
+    .taskPara{
+        font-family:"Roboto";
+        color:black;
+        font-size:28px;
+    }
+}
