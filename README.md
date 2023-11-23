@@ -1,3 +1,13 @@
+### Additinoal Features
+whenever we click the check box of each task and change the task status,the tasks will sorted based on sorting condition.
+whenever we add a new task to task list,the tasks will added based on sorting condition.
+### Functinoality
+Form element is used to add task in the task list and each task is added based on sorting condition
+Intially sorting condtion is complete to Notcomplete.
+when we change sorting method Notcomplete to complete, all tasks are sorted from notcomplete to complete
+whenever the we click the each task details will open and click back butoon it will navugate to Home page
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
@@ -68,3 +78,6 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+
+
