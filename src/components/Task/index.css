@@ -1,42 +1,54 @@
-.taskName{
-    font-size:7px;
-    font-family:"Roboto";
-    text-decoration: none;
-    background-color: orangered;
-    color:white;
-    text-decoration: none;
+.taskSection{
+    display: flex;
+    width:95vw;
+    max-width:700px;
+    
+    align-items: center;
+    
+    
+    margin-top:10px;
+    border-radius: 7px;
+    height: 30px;
+}
+
+
+
+.contentSection{
+    
+    
     display: flex;
     align-items: center;
-    width:70vw;
+    width:40vw;
+    background-color: orangered;
+    max-width:400px;
     height:30px;
     padding-left: 5px;
     border-top-left-radius: 10px;
     border-bottom-left-radius: 10px;
 }
 
+.taskName{
+    font-size: 9px;
+    color:white;
+    
+    
+    font-family:"Roboto";
+}
+
+
 .deleteButton{
     height:17px;
     width:60px;
-}
-
-.taskSection{
-    display: flex;
-    width:90vw;
-    max-width:700px;
-    justify-content: space-between;
-    align-items: center;
+    color:red
    
-    margin-top:10px;
-    border-radius: 7px;
-    
-    height: 30px;
 }
 
 .statusSection{
     display: flex;
     justify-content: space-evenly;
     align-items: center;
-    width:30vw;
+    width:50vw;
+    max-width:300px;
     background-color: white;
     height: 30px;
     border-top-right-radius: 10px;
@@ -44,13 +56,14 @@
 }
 .completedStatus{
     color:Green;
-    font-size:7px;
+    font-size:9px;
     
 }
 
 .notCompletedStatus{
     color:Red;
-    font-size:7px;
+    
+    font-size:9px;
     
 
 }
@@ -58,76 +71,34 @@
 
 @media screen and (min-width:400px){
     .taskName{
-        font-size:12px;
-       
-        width:50vw;
-        height:30px;
-        padding-left: 10px;
-       
-       
-    
+        font-size:14px;
+
     }
     
     .deleteButton{
        
         height:20px;
-    width:70px;
+        width:70px;
     
         
     }
     
-    .taskSection{
-        
-        width:90vw;
-        
-        height: 35px
-    }
-    
-    .statusSection{
-       height:30px;
-        width:40vw;
-    }
     .completedStatus{
        
-        font-size:17px;
+        font-size:14px;
     }
     
     .notCompletedStatus{
         
-        font-size:17px;
+        font-size:14px;
     }
 }
 
 @media screen and (min-width:768px){
     .taskName{
-    font-size:15px;
-    
-    width:50vw;
-    height:35px;
-    padding-left: 10px;
-   
-    }
-    
-    .deleteButton{
-        
-        height:23px;
-    width:90px;
-    
-        
-    }
-    
-    .taskSection{
-        
-        width:90vw;
-       
-        height: 45px
-    }
-    
-    .statusSection{
-        height:35px;
-        width:40vw;
-    }
-    .completedStatus{
+    font-size:20px;
+}
+  .completedStatus{
         
         font-size:20px;
     }
@@ -138,43 +109,3 @@
     }
 }
 
-@media screen and (min-width:1024px){
-    .taskName{
-        font-size:16px;
-    
-    width:50vw;
-    height:40px;
-    padding-left: 10px;
-    
-        
-    
-    }
-    
-    .deleteButton{
-        height:30px;
-    width:100px;
-    
-       
-    }
-    
-    .taskSection{
-        
-        width:90vw;
-       
-        height: 50px
-    }
-    
-    .statusSection{
-        height:40px;
-        width:40vw;
-    }
-    .completedStatus{
-        
-        font-size:24px;
-    }
-    
-    .notCompletedStatus{
-        
-        font-size:24px;
-    }
-}

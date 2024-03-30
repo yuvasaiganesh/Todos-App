@@ -26,8 +26,12 @@ const Task=(props)=>{
     return(
        
         <div className="taskSection" draggable>
-            <Link className="taskName" to={`/:${id}`} state={details}>
-            <h1>{task}</h1>
+             <Link  to={`/:${id}`} state={details}>
+            <div className="contentSection">
+           
+              <h1 className="taskName">{task}</h1>
+            
+            </div>
             </Link>
             <div className="statusSection">
             <input type="checkbox" checked={complete} onChange={tochangeUpdate}/>
