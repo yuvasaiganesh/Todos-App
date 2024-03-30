@@ -111,8 +111,8 @@ return each})
     <div className="sortingSection">
            <select  onChange={this.changeSort} >
            
-            <option value="one">complete to Not Completed</option>
-            <option value="two">Notcomplete to Completed</option>
+            <option value="one">complete to Not completed</option>
+            <option value="two">Notcomplete to completed</option>
             </select> 
         </div>
     <div>

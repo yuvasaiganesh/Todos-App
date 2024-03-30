@@ -27,7 +27,7 @@ const Task=(props)=>{
        
         <div className="taskSection" draggable>
             <Link className="taskName" to={`/:${id}`} state={details}>
-            <h1 >{task}</h1>
+            <h1>{task}</h1>
             </Link>
             <div className="statusSection">
             <input type="checkbox" checked={complete} onChange={tochangeUpdate}/>

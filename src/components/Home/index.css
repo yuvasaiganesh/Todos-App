@@ -5,19 +5,22 @@
 }
 
 .addTask{
-    font-size:15px;
+    font-size:12px;
     font-family:"Roboto";
     color:black;
-    width:40vw;
+    width:60vw;
+    max-width:400px;
+    height:5vh;
 }
 
 .submitButton{
-    font-size:15px;
+    font-size:10px;
     font-family:"Roboto";
     color: white;
     background-color: orangered;
     height:25px;
-    width:50px;
+    width:25vw;
+    max-width:80px;
     border:none;
     border-radius: 5px;
 }
@@ -29,22 +32,32 @@
     background-size: cover;
     display: flex;
     flex-direction: column;
-    
     align-items: center;
     height: 100vh;
+    width:100vw
   }
 
   form{
     display: flex;
-    width:60vw;
+    width:90vw;
+    max-width:600px;
     justify-content: space-between;
   }
 
   .sortingSection{
     align-self: flex-start;
-    
-    font-size:10px;
-    margin:10px
+   
+    margin:10px;
+    width:40vw;
+    max-width:300px
+  }
+  select{
+    width:80vw;
+    max-width:200px;
+    font-size:12px;
+    height:4vh;
+   
+
   }
   
   @media screen and (min-width:400px){
@@ -54,25 +67,22 @@
     }
     
     .addTask{
-        font-size:18px;
+        font-size:15px;
         
-        width:50vw;
-        height:30px;
     }
+    
     
     .submitButton{
         font-size:20px;
+        height:30px
         
-        height:35px;
-        width:70px;
+        
         
     }
-    form{
-        
-        width:70vw;
-       
-      }
-
+    select{
+        font-size:14px;
+    }
+    
       
       
     
@@ -80,55 +90,4 @@
       
   }
 
-  @media screen and (min-width:768px){
-    .taskHeading{
-        font-size:40px;
-        
-    }
-    
-    .addTask{
-        font-size:20px;
-        
-        width:60vw;
-        height:35px;
-    }
-    
-    .submitButton{
-        font-size:22px;
-        
-        height:40px;
-        width:80px;
-        
-    }
-    form{
-        
-        width:80vw;
-       
-      }
-    
-    
-      
-  }
-
-  @media screen and (min-width:768px){
-    .taskHeading{
-        font-size:50px;
-        
-    }
-    
-    .addTask{
-        font-size:22px;
-        
-        width:65vw;
-        
-    }
-    
-    .submitButton{
-        font-size:24px;
-        
-    }
-   
-    
-    
-      
-  }
+  
