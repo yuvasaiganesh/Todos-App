@@ -19,13 +19,15 @@ const Home = () => {
     event.preventDefault();
     const newTask = { id: uuidv4(), task: task, complete: false, status: "NotDone" };
     setTasklist((prevtask) => [...prevtask, newTask]);
+    
     setTask("");
   };
 
   const deleteItem = (itemId) => {
     const newList = taskList.filter((item) => item.id !== itemId);
     setTasklist(newList);
-  };
+   
+    };
 
   const taskUpdate = (itemId) => {
     const newTodo = taskList.map((item) => {
@@ -35,22 +37,29 @@ const Home = () => {
       }
       return item;
     });
-    setTasklist(newTodo);
+    console.log(newTodo)
+    updateSort()
+   
+
   };
 
   const updateSort = () => {
     let finalList = [];
+    
     if (sorting === "one") {
       const newValues1 = taskList.filter((item) => item.status === "Done");
       const newValues2 = taskList.filter((item) => item.status === "NotDone");
       finalList = [...newValues1, ...newValues2];
     }
+    
     if (sorting === "two") {
       const newValues1 = taskList.filter((item) => item.status === "Done");
       const newValues2 = taskList.filter((item) => item.status === "NotDone");
       finalList = [...newValues2, ...newValues1];
     }
-    localStorage.setItem("taskList", JSON.stringify(finalList));
+    
+    setTasklist(finalList)
+    
   };
 
   const changeSort = (event) => {
@@ -59,7 +68,14 @@ const Home = () => {
 
   useEffect(() => {
     updateSort();
-  }, [sorting, taskList]);
+  }, [sorting]);
+
+  useEffect(() => {
+    
+    localStorage.setItem("taskList", JSON.stringify(taskList));
+  }, [taskList]);
+
+
 
   return (
     <div className="homePage">
@@ -77,7 +93,7 @@ const Home = () => {
         </button>
       </form>
       <div className="sortingSection">
-        <select onChange={changeSort}>
+        <select value={sorting} onChange={changeSort}>
           <option value="one">complete to Not completed</option>
           <option value="two">Notcomplete to completed</option>
         </select>
