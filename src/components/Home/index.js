@@ -1,130 +1,99 @@
-import {Component} from "react"
 import Task from "../Task"
 import { v4 as uuidv4 } from 'uuid';
-import "./index.css"
-import React from "react"
+import React, { useEffect, useState } from "react";
 
+import "./index.css";
 
+const Home = () => {
+  const [task, setTask] = useState("");
+  const [sorting, setSort] = useState("one");
+  const [taskList, setTasklist] = useState(
+    JSON.parse(localStorage.getItem("taskList")) || []
+  );
 
+  const addTask = (event) => {
+    setTask(event.target.value);
+  };
 
-class Home extends Component{
- 
- state={task:"",tasklist:[],sorting:"one"}
+  const toSubmit = (event) => {
+    event.preventDefault();
+    const newTask = { id: uuidv4(), task: task, complete: false, status: "NotDone" };
+    setTasklist((prevtask) => [...prevtask, newTask]);
+    setTask("");
+  };
 
- addTask=(event)=>{
-this.setState({task:event.target.value})
- }
+  const deleteItem = (itemId) => {
+    const newList = taskList.filter((item) => item.id !== itemId);
+    setTasklist(newList);
+  };
 
- toSubmit=(event)=>{
-  event.preventDefault()
-  const {task,tasklist}=this.state
-  const newTask={id:uuidv4(),task:task, complete:false, status:"NotDone"}
-  this.setState({tasklist:[...tasklist,newTask],task:""},this.updateSort)
- 
- }
- deleteItem=(item)=>{
-    const {tasklist}=this.state
-  const newList=tasklist.filter(each=>each.id !== item)
-  this.setState({tasklist:newList},this.updateSort)
- }
+  const taskUpdate = (itemId) => {
+    const newTodo = taskList.map((item) => {
+      if (item.id === itemId) {
+        item.complete = !item.complete;
+        item.status = item.complete ? "Done" : "NotDone";
+      }
+      return item;
+    });
+    setTasklist(newTodo);
+  };
 
- taskUpdate=(item)=>{
-    const {tasklist}=this.state
-  const newtodo=tasklist.map(each=>{
-    if (each.id === item){
-        if (each.complete){
-            each.complete=false
-            each.status="NotDone"
-        }
-        else{
-            each.complete=true
-            each.status="Done"
-        }
-        
+  const updateSort = () => {
+    let finalList = [];
+    if (sorting === "one") {
+      const newValues1 = taskList.filter((item) => item.status === "Done");
+      const newValues2 = taskList.filter((item) => item.status === "NotDone");
+      finalList = [...newValues1, ...newValues2];
     }
-return each})
-  
-  this.setState({tasklist:newtodo,},this.updateSort)
-  
- }
- 
-
- updateSort=()=>{
-    const {sorting,tasklist}=this.state
-    if (sorting==="one"){
-    const newValues1=tasklist.filter(each=>each.status==="Done")
-    const newValues2=tasklist.filter(each=>each.status==="NotDone")
-    const finalList=[...newValues1,...newValues2]
-    this.setState({tasklist:finalList})
-    
+    if (sorting === "two") {
+      const newValues1 = taskList.filter((item) => item.status === "Done");
+      const newValues2 = taskList.filter((item) => item.status === "NotDone");
+      finalList = [...newValues2, ...newValues1];
     }
+    localStorage.setItem("taskList", JSON.stringify(finalList));
+  };
 
-    if (sorting==="two"){
-        const newValues1=tasklist.filter(each=>each.status==="Done")
-        const newValues2=tasklist.filter(each=>each.status==="NotDone")
-        const finalList=[...newValues2,...newValues1]
-        this.setState({tasklist:finalList})
-      
-        }
+  const changeSort = (event) => {
+    setSort(event.target.value);
+  };
 
-       
- }
+  useEffect(() => {
+    updateSort();
+  }, [sorting, taskList]);
 
- changeSort=(event)=>{
-    const {tasklist}=this.state
-    if (event.target.value==="one"){
-    const newValues1=tasklist.filter(each=>each.status==="Done")
-    const newValues2=tasklist.filter(each=>each.status==="NotDone")
-    const finalList=[...newValues1,...newValues2]
-    this.setState({tasklist:finalList,sorting:event.target.value})
-    
-    }
-
-    if (event.target.value==="two"){
-        const newValues1=tasklist.filter(each=>each.status==="Done")
-        const newValues2=tasklist.filter(each=>each.status==="NotDone")
-        const finalList=[...newValues2,...newValues1]
-        this.setState({tasklist:finalList,sorting:event.target.value})
-       
-        }
-
-       
- }
- 
-
-
-    render(){
-        const {task,tasklist}=this.state
-        
-        
-                
-                return(
-<div className="homePage">
-<h1 className="taskHeading">Add Your Task</h1>
-
-    <form onSubmit={this.toSubmit}>
-        
-        
-        <input placeholder="Enter your Task" className="addTask" type="text" value={task} onChange={this.addTask}/>
-        <button className="submitButton" type="submit">Add</button>
-    </form>
-    <div className="sortingSection">
-           <select  onChange={this.changeSort} >
-           
-            <option value="one">complete to Not completed</option>
-            <option value="two">Notcomplete to completed</option>
-            </select> 
-        </div>
-    <div>
-       
-        
-        {tasklist.map((item,index)=>{
-           return( <Task key={item.id} taskDetails={item} toUpdate={this.taskUpdate} addDelete={this.deleteItem}/>)
-        })}
+  return (
+    <div className="homePage">
+      <h1 className="taskHeading">Add Your Task</h1>
+      <form onSubmit={toSubmit}>
+        <input
+          placeholder="Enter your Task"
+          className="addTask"
+          type="text"
+          value={task}
+          onChange={addTask}
+        />
+        <button className="submitButton" type="submit">
+          Add
+        </button>
+      </form>
+      <div className="sortingSection">
+        <select onChange={changeSort}>
+          <option value="one">complete to Not completed</option>
+          <option value="two">Notcomplete to completed</option>
+        </select>
+      </div>
+      <div>
+        {taskList.map((item) => (
+          <Task
+            key={item.id}
+            taskDetails={item}
+            toUpdate={taskUpdate}
+            addDelete={deleteItem}
+          />
+        ))}
+      </div>
     </div>
-</div>
-        )
-    
-}
-}
-export default Home
+  );
+};
+
+export default Home;
